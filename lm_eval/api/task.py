@@ -923,11 +923,12 @@ class ConfigurableTask(Task):
                     )
 
     def download(self, dataset_kwargs: Optional[Dict[str, Any]] = None) -> None:
-        self.dataset = datasets.load_dataset(
-            path=self.DATASET_PATH,
-            name=self.DATASET_NAME,
-            **dataset_kwargs if dataset_kwargs is not None else {},
-        )
+        #self.dataset = datasets.load_dataset(
+        #    path=self.DATASET_PATH,
+        #    name=self.DATASET_NAME,
+        #    **dataset_kwargs if dataset_kwargs is not None else {},
+        #)
+        self.dataset = datasets.load_from_disk("/home/datasets/openai_dataset/")
 
     def has_training_docs(self) -> bool:
         if self.config.training_split is not None:
